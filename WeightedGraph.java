@@ -3,11 +3,11 @@ import java.util.LinkedList;
 
 public class WeightedGraph {
     static class Edge {
-        int source;
-        int destination;
+        char source;
+        char destination;
         int weight;
 
-        public Edge(int source, int destination, int weight) {
+        public Edge(char source, char destination, int weight) {
             this.source = source;
             this.destination = destination;
             this.weight = weight;
@@ -27,7 +27,7 @@ public class WeightedGraph {
             }
         }
 
-        public void addEdge(int source, int destination, int weight) {
+        public void addEdge(char source, char destination, int weight) {
             Edge edge = new Edge(source, destination, weight);
             adjacencylist[source].addFirst(edge); //for directed graph
         }
@@ -43,17 +43,17 @@ public class WeightedGraph {
         }
     }
       public static void main(String[] args) {
-            int vertices = 6;
-            Graph graph = new Graph(vertices);
-            graph.addEdge(0, 1, 4);
-            graph.addEdge(0, 2, 3);
-            graph.addEdge(1, 3, 2);
-            graph.addEdge(1, 2, 5);
-            graph.addEdge(2, 3, 7);
-            graph.addEdge(3, 4, 2);
-            graph.addEdge(4, 0, 4);
-            graph.addEdge(4, 1, 4);
-            graph.addEdge(4, 5, 6);
-            graph.printGraph();
+            int vertices = 5;
+            Graph trainRoutes = new Graph(vertices);
+            trainRoutes.addEdge('A', 'B', 5);
+            trainRoutes.addEdge('B', 'C', 4);
+            trainRoutes.addEdge('C', 'D', 8);
+            trainRoutes.addEdge('D', 'C', 8);
+            trainRoutes.addEdge('D', 'E', 6);
+            trainRoutes.addEdge('A', 'D', 5);
+            trainRoutes.addEdge('C', 'E', 2);
+            trainRoutes.addEdge('E', 'B', 3);
+            trainRoutes.addEdge('A', 'E', 7);
+            trainRoutes.printGraph();
       }
 }
