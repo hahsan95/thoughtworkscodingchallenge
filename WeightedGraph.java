@@ -18,6 +18,7 @@ public class WeightedGraph {
         int vertices;
         LinkedList<Edge> [] adjacencylist;
 
+
         Graph(int vertices) {
             this.vertices = vertices;
             adjacencylist = new LinkedList[vertices];
@@ -41,6 +42,17 @@ public class WeightedGraph {
                 }
             }
         }
+
+        public boolean pathDistance(int index, char source, char destination){
+            LinkedList<Edge> list = adjacencylist[index];
+            for(int i = 0; i < list.size(); i++) {
+                if(list.get(i).destination == destination){
+                    System.out.println(list.get(i).weight);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
       public static void main(String[] args) {
             int vertices = 5;
@@ -54,6 +66,13 @@ public class WeightedGraph {
             trainRoutes.addEdge(2, 'C', 'E', 2);
             trainRoutes.addEdge(4, 'E', 'B', 3);
             trainRoutes.addEdge(0, 'A', 'E', 7);
-            trainRoutes.printGraph();
+            // trainRoutes.printGraph();
+            int weight = 0;
+            boolean test = trainRoutes.pathDistance(0, 'A', 'B');
+            if(test == true) {
+                System.out.println('P');
+                trainRoutes.pathDistance(1, 'B', 'C');
+            }
+
       }
 }
